@@ -17,5 +17,11 @@ export const AntTab = styled(Tab)((props) => {
       color: "#1890ff",
       opacity: 1,
     },
+    "& .MuiBadge-colorPrimary": {
+      backgroundColor: "red",
+    },
+    "&.Mui-selected .MuiBadge-colorPrimary": {
+      backgroundColor: "green",
+    },
   };
 });
