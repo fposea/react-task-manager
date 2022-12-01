@@ -1,8 +1,9 @@
 import React from "react";
-import { Container } from "@mui/material";
+import { Container, Badge } from "@mui/material";
 import { AddMatesDialog } from "../components/add-mates-dialog/addMatesDialog";
 import TabContent from "../components/tab-content/TabContent";
 import BadgeAvatar from "../components/avatar/BadgeAvatar";
+import { StyledBadge } from "../components/shared/badge/Badge";
 
 const AddMates = () => {
   return (
@@ -11,20 +12,47 @@ const AddMates = () => {
         <br />
         <AddMatesDialog />
         <br />
-        <br />
         <TabContent type={false} />
         <br />
-        <br />
         <TabContent type={true} />
-        <br />
-        <br />
         <br />
         <BadgeAvatar src="/avatars/AE.png" size="s" />
         <br />
         <BadgeAvatar src="/avatars/camera.png" size="m" />
         <br />
         <BadgeAvatar src="/avatars/camera.png" size="l" variant="dot" />
-        <br />
+        <hr />
+        <div>
+          <Badge variant="standard" badgeContent={3} color="primary" />
+          <br />
+          <Badge
+            variant="status"
+            badgeContent={"In Progress"}
+            color="inProgress"
+          />
+          <br />
+          <Badge variant="status" badgeContent={"In Review"} color="inReview" />
+          <br />
+          <Badge variant="status" badgeContent={"Pending"} color="pending" />
+          <br />
+          <Badge
+            variant="status"
+            badgeContent={"Completed"}
+            color="completed"
+          />
+        </div>
+        <div>
+          <Badge variant="standard" badgeContent={3} color="primary" />
+          <Badge variant="standard" badgeContent={5} color="primary" />
+        </div>
+
+        <div>
+          <StyledBadge
+            variant="standard"
+            badgeContent={"Pending"}
+            className="status-pending"
+          />
+        </div>
       </Container>
     </div>
   );
