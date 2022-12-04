@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Paper, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import Button from "../components/shared/button/Button";
+import SideBar from "../components/shared/side-bar/SideBar";
 
 function Test() {
   const theme = useTheme();
@@ -70,6 +71,7 @@ function Test() {
         <Button disabled size="small" variant="contained">
           Test
         </Button>
+        <SideBar />
       </Container>
     </div>
   );

@@ -95,6 +95,36 @@ const theme = createTheme({
         },
       },
     },
+    MuiButton: {
+      styleOverrides: {
+        login: {
+          width: "180px",
+          height: "48px",
+          border: "1.7px solid #3754DB",
+          color: "#3754DB",
+          fontWeight: "500",
+          fontSize: "16px",
+          lineHeight: "16px",
+        },
+        create: {
+          width: "180px",
+          height: "48px",
+          border: "1.7px solid #3754DB",
+          backgroundColor: "#fff",
+          color: "#3754DB",
+          fontWeight: "500",
+          fontSize: "16px",
+          lineHeight: "16px",
+        },
+      },
+    },
+    MuiTypography: {
+      styleOverrides: {
+        subtitle: {
+          color: "#62667E",
+        },
+      },
+    },
   },
 });
 

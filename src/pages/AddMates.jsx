@@ -43,6 +43,7 @@ const AddMates = () => {
         </div>
         <div>
           <Badge variant="standard" badgeContent={3} color="primary" />
+          <br />
           <Badge variant="standard" badgeContent={5} color="primary" />
         </div>
 
