@@ -1,8 +1,7 @@
-import { Link, Stack, Typography } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 import Button from "../shared/button/Button";
 import PropTypes from "prop-types";
 import { HalfPage } from "../shared/layout/HalfPage";
-import { CreateAccount } from "../../pages/CreateAccount";
 
 export const Media = (props) => {
   const { align, hasCreate } = props;

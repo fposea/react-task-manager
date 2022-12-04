@@ -1,4 +1,3 @@
-import { Box } from "@mui/material";
 import { Stack } from "@mui/system";
 import { Media } from "../components/authentication/Media";
 import { AuthForm } from "../components/authentication/AuthForm";
