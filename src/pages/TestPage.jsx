@@ -71,7 +71,7 @@ function Test() {
         <Button disabled size="small" variant="contained">
           Test
         </Button>
-        <SideBar />
+        {/* <SideBar /> */}
       </Container>
     </div>
   );

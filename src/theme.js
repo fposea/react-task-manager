@@ -2,6 +2,7 @@ import { createTheme } from "@mui/material/styles";
 import GelionRegular from "./assets/fonts/Gelion Regular.woff";
 import GelionBold from "./assets/fonts/Gelion Bold.woff";
 import GelionLight from "./assets/fonts/Gelion Light.woff";
+import DoneRoundedIcon from "@mui/icons-material/DoneRounded";
 
 const theme = createTheme({
   palette: {
@@ -122,6 +123,70 @@ const theme = createTheme({
       styleOverrides: {
         subtitle: {
           color: "#62667E",
+        },
+      },
+    },
+    MuiAlert: {
+      styleOverrides: {
+        root: {
+          // display: "flex",
+          alignItems: "center",
+          borderRadius: "12px",
+          width: "350px",
+          height: "81px",
+          fontWeight: "300",
+          fontStyle: "italic",
+          fontSize: "12px",
+          lineHeight: "14px",
+          // letterSpacing: "-0.02em",
+        },
+        message: {
+          marginLeft: "20px",
+        },
+        filledWarning: {
+          color: "#fff",
+        },
+        filledSuccess: {
+          color: "#fff",
+        },
+        outlinedError: {
+          color: "#B80020",
+        },
+        outlinedWarning: {
+          color: "#00C271",
+        },
+        outlinedInfo: {
+          color: "#6684FF",
+        },
+        outlinedSuccess: {
+          color: "#00C271",
+        },
+        icon: {
+          marginLeft: "14px",
+        },
+        action: {
+          marginBottom: "30px",
+          marginRight: "2px",
+        },
+        success: {
+          icon: "<DoneRoundedIcon/>",
+        },
+      },
+    },
+    MuiAlertTitle: {
+      styleOverrides: {
+        root: {
+          fontWeight: "500",
+          fontStyle: "normal",
+          fontSize: "18px",
+          lineHeight: "22px",
+          // letterSpacing: "-0.02em",
+        },
+        filledWarning: {
+          color: "#fff",
+        },
+        filledSuccess: {
+          color: "#fff",
         },
       },
     },
