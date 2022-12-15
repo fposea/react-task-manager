@@ -1,8 +1,22 @@
 import React from "react";
-import { Container, Paper, Typography } from "@mui/material";
+import { Container, Paper, Typography, Box } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import Button from "../components/shared/button/Button";
+import RecoverPassword from "../components/shared/recover-password/RecoverPassword";
+import Badge from "../components/shared/badge/Badge";
+
 import SideBar from "../components/shared/side-bar/SideBar";
+import Chart from "../assets/icons/icon/filled/Chart";
+import Chat from "../assets/icons/icon/filled/Chat";
+import Notification from "../assets/icons/icon/filled/Notification";
+import Overview from "../assets/icons/icon/filled/Overview";
+import RecoverPasswordWrapper from "../components/shared/recover-password-wrapper/RecoverPasswordWrapper";
+import Stack from "@mui/material/Stack";
+import ForgotPassword from "../components/shared/forgot-password/ForgotPassword";
+import Card from "../components/shared/card-component/Card-Component";
+import CheckBox from "../components/shared/check-box/CheckBox";
+import ToggleSwitch from "../components/shared/toggle-switch/ToggleSwitch";
+import Login from "../components/login/Login";
 
 function Test() {
   const theme = useTheme();
@@ -10,7 +24,7 @@ function Test() {
     <div>
       <Container
         sx={{
-          border: `1px solid ${theme.palette.primary.main}`,
+          border: theme.palette.primary.main,
         }}
       >
         <Paper>
@@ -71,8 +85,31 @@ function Test() {
         <Button disabled size="small" variant="contained">
           Test
         </Button>
-        {/* <SideBar /> */}
+
+        <br />
+        <Card />
+        <br />
+        <SideBar />
+        <Chart />
+        <Chat />
+        <Notification />
+        <Overview />
+        <Stack direction="column" spacing={1} alignItems="center">
+          <CheckBox />
+          <CheckBox disabled />
+          <CheckBox disabled disabledChecked />
+          <CheckBox indeterminate />
+          <CheckBox indeterminate disabled />
+          <ToggleSwitch />
+        </Stack>
       </Container>
+      <RecoverPasswordWrapper>
+        <ForgotPassword />
+      </RecoverPasswordWrapper>
+      <RecoverPasswordWrapper>
+        <RecoverPassword />
+      </RecoverPasswordWrapper>
+      <Login />
     </div>
   );
 }

@@ -1,8 +1,4 @@
 import { createTheme } from "@mui/material/styles";
-import GelionRegular from "./assets/fonts/Gelion Regular.woff";
-import GelionBold from "./assets/fonts/Gelion Bold.woff";
-import GelionLight from "./assets/fonts/Gelion Light.woff";
-import DoneRoundedIcon from "@mui/icons-material/DoneRounded";
 
 const theme = createTheme({
   palette: {
@@ -31,6 +27,7 @@ const theme = createTheme({
       secondary: "#62667E",
       disabled: "#C2C4CF",
     },
+
     inProgress: {
       main: "#F2F4FD",
       contrastText: "#3754DB",
@@ -43,6 +40,7 @@ const theme = createTheme({
       main: "#F0FFF9",
       contrastText: "#00C271",
     },
+
     pending: {
       main: "#FFFDF5",
       contrastText: "#DF9A00",
@@ -51,9 +49,21 @@ const theme = createTheme({
       main: "#FFF0F0",
       contrastText: "#B80020",
     },
+    unassignedGrey: {
+      main: "#F2F2F2",
+      contrastText: "#808080",
+    },
+    primaryLight: {
+      main: "#FFF2F4",
+      contrastText: "#B80020",
+    },
+    secondaryLight: {
+      main: "#EEF0FC",
+      contrastText: "#3754DB",
+    },
   },
   typography: {
-    fontFamily: "Gelion, Roboto, Arial",
+    fontFamily: "Gelion",
   },
   components: {
     MuiCssBaseline: {
@@ -63,7 +73,6 @@ const theme = createTheme({
               font-style: normal;
               font-display: swap;
               font-weight: 400;
-              src: local('Gelion'), local('Gelion-Regular'), url(${GelionRegular}) format('woff');
               unicodeRange: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF;
             },
             @font-face {
@@ -71,7 +80,6 @@ const theme = createTheme({
                 font-style: bold;
                 font-display: swap;
                 font-weight: 700;
-                src: local('Gelion'), local('Gelion-Bold'), url(${GelionBold}) format('woff');
                 unicodeRange: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF;
               },
               @font-face {
@@ -79,11 +87,11 @@ const theme = createTheme({
                 font-style: light;
                 font-display: swap;
                 font-weight: 200;
-                src: local('Gelion'), local('Gelion-Light'), url(${GelionLight}) format('woff');
                 unicodeRange: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF;
               }
           `,
     },
+
     MuiBadge: {
       styleOverrides: {
         status: {
@@ -187,6 +195,33 @@ const theme = createTheme({
         },
         filledSuccess: {
           color: "#fff",
+        },
+      },
+    },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          borderRadius: "12px",
+          margin: "12px 0px 4px 0px",
+          width: "100%",
+          backgroundColor: "#fbfbfe",
+        },
+      },
+    },
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          color: "#2c2e3a",
+          lineHeight: "19px",
+          marginTop: "32px",
+        },
+      },
+    },
+    MuiFormHelperText: {
+      styleOverrides: {
+        root: {
+          marginLeft: 0,
+          color: "#6E7391",
         },
       },
     },

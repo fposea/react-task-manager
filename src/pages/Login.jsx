@@ -3,7 +3,7 @@ import { Media } from "../components/authentication/Media";
 import { LoginForm } from "../components/authentication/LoginForm";
 import { PoseaTasksList } from "../components/tasks-list/PoseaTasksList";
 
-export const Login = () => {
+ const Login = () => {
   return (
     <Stack spacing={3} padding="30px">
       <PoseaTasksList />
@@ -23,3 +23,5 @@ export const Login = () => {
     </Stack>
   );
 };
+
+export default Login

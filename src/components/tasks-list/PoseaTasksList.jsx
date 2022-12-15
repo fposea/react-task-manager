@@ -27,6 +27,12 @@ export const PoseaTasksList = () => {
       <Link underline="hover" href="../login">
         Login
       </Link>
+      <Link underline="hover" href="../inputs">
+        Input
+      </Link>
+      <Link underline="hover" href="../test">
+        Test
+      </Link>
     </Breadcrumbs>
   );
 };
