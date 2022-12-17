@@ -1,9 +1,8 @@
 import React from "react";
-import { Container, Paper, Typography, Box } from "@mui/material";
+import { Container, Paper, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import Button from "../components/shared/button/Button";
 import RecoverPassword from "../components/shared/recover-password/RecoverPassword";
-import Badge from "../components/shared/badge/Badge";
 
 import SideBar from "../components/shared/side-bar/SideBar";
 import Chart from "../assets/icons/icon/filled/Chart";

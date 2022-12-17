@@ -2,7 +2,7 @@ import { Stack, Typography, TextField } from "@mui/material";
 import PropTypes from "prop-types";
 import { HalfPage } from "../shared/layout/HalfPage";
 import Button from "../shared/button/Button";
-import PersonalInput from "../shared/text-input/PersonalInput";
+import SignupForm from "./SignupForm";
 
 export const AuthForm = (props) => {
   const { align, hasLogin } = props;
@@ -32,24 +32,7 @@ export const AuthForm = (props) => {
           Create an Account
         </Typography>
         <Typography variant="subtitle">It's simple and Easy!!</Typography>
-        <TextField
-          sx={{ paddingTop: "24px" }}
-          // label="Fullname"
-          placeholder="Fullname"
-          helperText="Information about the input"
-        />
-        <TextField
-          sx={{ paddingTop: "24px" }}
-          placeholder="Email Address"
-          helperText="Example: mano@gmail.com"
-        />
-        <TextField
-          sx={{ paddingY: "24px" }}
-          placeholder="Enter A Password"
-          type="password"
-          helperText="Up to 8 characters with an Uppercase, symbol and number"
-        />
-        <Button variant="contained">Create Account</Button>
+        <SignupForm />
       </Stack>
     </HalfPage>
   );

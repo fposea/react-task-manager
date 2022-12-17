@@ -1,17 +1,11 @@
-import { Stack, Typography, TextField, Link } from "@mui/material";
+import { Stack, Typography, Link } from "@mui/material";
 import PropTypes from "prop-types";
 import { HalfPage } from "../shared/layout/HalfPage";
 import Button from "../shared/button/Button";
-import PersonalInput from "../shared/text-input/PersonalInput";
-import CheckBox from "@mui/material/Checkbox";
-import { useState } from "react";
+import SigninForm from "./SigninForm";
 
 export const LoginForm = (props) => {
   const { align, hasLogin } = props;
-  const [checked, setChecked] = useState(false);
-  const handleChange = (event) => {
-    setChecked(event.target.checked);
-  };
 
   return (
     <HalfPage sx={{ backgroundColor: "#fff", justifyContent: "flex-start" }}>
@@ -37,50 +31,11 @@ export const LoginForm = (props) => {
           Welcome Back.
         </Typography>
 
-        <TextField
-          sx={{ paddingTop: "24px" }}
-          placeholder="Email Address"
-          helperText="Example: mano@gmail.com"
-        />
-        <TextField
-          sx={{ paddingTop: "24px" }}
-          placeholder="Enter A Password"
-          type="password"
-          helperText="Up to 8 characters with an Uppercase, symbol and number"
-        />
-
-        <Stack
-          direction="row"
-          spacing={1.2}
-          sx={{ paddingTop: "25px", alignItems: "center" }}
-        >
-          <CheckBox
-            checked={checked}
-            onChange={handleChange}
-            color="primary"
-            size="medium"
-            disableRipple
-          ></CheckBox>
-          <Typography
-            sx={{
-              fontWeight: "600",
-              fontStyle: "normal",
-              fontSize: "16px",
-              lineHeight: "19px",
-              letterSpacing: "-0.02em",
-            }}
-          >
-            Keep me Signed in
-          </Typography>
-        </Stack>
-
-        <Button variant="contained" sx={{ width: "204px" }}>
-          Log In
-        </Button>
+        <SigninForm />
 
         <Stack>
           <Link
-            href="#"
+            href="/forgot"
             underline="none"
             sx={{
               fontWeight: "600",
