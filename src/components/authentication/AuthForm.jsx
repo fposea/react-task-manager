@@ -32,7 +32,7 @@ export const AuthForm = (props) => {
           Create an Account
         </Typography>
         <Typography variant="subtitle">It's simple and Easy!!</Typography>
-        <SignupForm />
+        <SignupForm buttonText="Create Account" />
       </Stack>
     </HalfPage>
   );

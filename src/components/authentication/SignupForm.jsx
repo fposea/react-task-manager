@@ -23,7 +23,8 @@ const validationSchema = Yup.object({
     .required("Required"),
 });
 
-const SignupForm = () => {
+const SignupForm = (props) => {
+  const { buttonText } = props;
   const [showPassword, setShowPassword] = useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -111,7 +112,7 @@ const SignupForm = () => {
         variant="contained"
         type="submit"
       >
-        Create Account
+        {buttonText}
       </Button>
     </form>
   );

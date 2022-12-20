@@ -14,10 +14,10 @@ function Tasks() {
           <Typography variant="h6">Student: Florin Posea</Typography>
           <PoseaTasksList />
         </Stack>
-        <Stack spacing={1} paddingTop="16px">
+        {/* <Stack spacing={1} paddingTop="16px">
           <Typography variant="h6">Student: Alexandra Muresan</Typography>
           <MuresanTasksList />
-        </Stack>
+        </Stack> */}
       </Stack>
     </Stack>
   );

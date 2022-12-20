@@ -125,6 +125,25 @@ const theme = createTheme({
           fontSize: "16px",
           lineHeight: "16px",
         },
+        delete: {
+          border: "1.7px solid #FFF0F0",
+          backgroundColor: "#FFF0F0",
+          color: "#B80020",
+          fontWeight: "500",
+          fontSize: "16px",
+          lineHeight: "19px",
+        },
+        logout: {
+          "&": {
+            width: "208px",
+          },
+          border: "1.7px solid #FFF0F0",
+          backgroundColor: "#FFF0F0",
+          color: "#B80020",
+          fontWeight: "500",
+          fontSize: "16px",
+          lineHeight: "19px",
+        },
       },
     },
     MuiTypography: {
@@ -213,7 +232,7 @@ const theme = createTheme({
         root: {
           color: "#2c2e3a",
           lineHeight: "19px",
-          marginTop: "32px",
+          marginTop: "18px",
         },
       },
     },
@@ -222,6 +241,31 @@ const theme = createTheme({
         root: {
           marginLeft: 0,
           color: "#6E7391",
+        },
+      },
+    },
+    MuiDialog: {
+      styleOverrides: {
+        paper: {
+          padding: "24px",
+          width: "500px",
+          height: "600px",
+          borderRadius: "20px",
+        },
+      },
+    },
+    MuiDialogContent: {
+      styleOverrides: {
+        root: {
+          padding: "0px 16px 6px",
+        },
+      },
+    },
+    MuiDialogActions: {
+      styleOverrides: {
+        root: {
+          padding: "8px 16px",
+          justifyContent: "flex-start",
         },
       },
     },

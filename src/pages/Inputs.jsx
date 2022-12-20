@@ -14,7 +14,7 @@ export const Inputs = () => {
           <Typography>
             <h2>SignUp Form</h2>
           </Typography>
-          <SignupForm />
+          <SignupForm buttonText="Create Account" />
         </Stack>
         <Stack sx={{ width: "384px" }}>
           <Typography>
