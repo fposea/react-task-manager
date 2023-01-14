@@ -21,7 +21,7 @@ export const PoseaTasksList = () => {
       <Link underline="hover" href="../tabs">
         Tabs
       </Link>
-      <Link underline="hover" href="../account">
+      <Link underline="hover" href="../createaccount">
         Create Account
       </Link>
       <Link underline="hover" href="../login">
