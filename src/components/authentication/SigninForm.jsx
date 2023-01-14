@@ -14,6 +14,12 @@ import Button from "../shared/button/Button";
 import CheckBox from "@mui/material/Checkbox";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import { useDispatch, useSelector } from "react-redux";
+import { logInAction, getLoggedUserAction } from "../../store/app/app.slice";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
+const API_BASE_URL = "https://semicolon-task-manager.herokuapp.com";
 
 const validationSchema = Yup.object({
   email: Yup.string().email("Invalid email address").required("Required"),
@@ -23,6 +29,10 @@ const validationSchema = Yup.object({
 });
 
 const SigninForm = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const isLoading = useSelector((state) => state.app.auth.isLoading);
+
   const [showPassword, setShowPassword] = useState(false);
   const [checked, setChecked] = useState(false);
 
@@ -35,15 +45,30 @@ const SigninForm = () => {
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
-
   const formik = useFormik({
     initialValues: {
       email: "",
       password: "",
     },
     validationSchema: validationSchema,
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+    onSubmit: async (values) => {
+      try {
+        let res = await axios.post(`${API_BASE_URL}/auth/signin`, {
+          email: values.email,
+          password: values.password,
+        });
+        dispatch(logInAction(res.data));
+        console.log(res.data);
+        let res2 = await axios.get(`${API_BASE_URL}/user/logged-user`, {
+          headers: {
+            Authorization: `Bearer ${res.data.accessToken}`,
+          },
+        });
+        dispatch(getLoggedUserAction(res2));
+        navigate("/dashboard");
+      } catch (err) {
+        console.log(err);
+      }
     },
   });
 

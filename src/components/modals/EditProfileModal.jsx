@@ -1,6 +1,6 @@
 import CustomDialogTitle from "./CustomDialogTitle";
 import { Dialog, DialogContent, DialogActions } from "@mui/material";
-import SignupForm from "../authentication/SignupForm";
+import EditProfileForm from "../authentication/EditProfileForm";
 
 const modalInputsStyle = {
   "& .MuiInputLabel-root": {
@@ -22,7 +22,7 @@ const modalInputsStyle = {
 };
 
 const EditProfileModal = (props) => {
-  const { handleClose, open, variant } = props;
+  const { handleClose, open, variant, data } = props;
 
   return (
     <div>
@@ -31,7 +31,11 @@ const EditProfileModal = (props) => {
           Edit Profile
         </CustomDialogTitle>
         <DialogContent>
-          <SignupForm buttonText="Save" />
+          <EditProfileForm
+            buttonText="Save"
+            handleClose={handleClose}
+            data={data}
+          />
         </DialogContent>
       </Dialog>
     </div>

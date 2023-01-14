@@ -9,15 +9,3 @@ export const modalTypes = {
   uploadPicture: "Upload Picture",
   addTeam: "Add Team",
 };
-
-export const modalTypesArr = [
-  "createTask",
-  "editTask",
-  "deleteTask",
-  "logOut",
-  "logIn",
-  "createProfile",
-  "editProfile",
-  "uploadPicture",
-  "addTeam",
-];

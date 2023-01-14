@@ -5,6 +5,7 @@ import Button from "../shared/button/Button";
 import SigninForm from "./SigninForm";
 
 export const LoginForm = (props) => {
+
   const { align, hasLogin } = props;
 
   return (

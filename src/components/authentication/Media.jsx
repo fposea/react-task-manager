@@ -12,7 +12,7 @@ export const Media = (props) => {
         justifyContent="end"
         visibility={hasCreate ? "visible" : "hidden"}
       >
-        <Button variant="create" href="/account">
+        <Button variant="create" href="/createaccount">
           Create Account
         </Button>
       </Stack>

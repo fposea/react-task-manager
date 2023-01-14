@@ -5,9 +5,20 @@ import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogActions from "@mui/material/DialogActions";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const DeleteTaskModal = (props) => {
   const { handleClose, open, variant } = props;
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleDeleteTask = () => {
+    dispatch(handleClose);
+    // dispatch(deleteTaskAction());
+    navigate("/tasks");
+  };
 
   return (
     <div>
@@ -36,7 +47,11 @@ const DeleteTaskModal = (props) => {
           >
             No
           </Button>
-          <Button variant="delete" onClick="#" sx={{ width: "120px" }}>
+          <Button
+            variant="delete"
+            onClick={handleDeleteTask}
+            sx={{ width: "120px" }}
+          >
             Yes
           </Button>
         </DialogActions>

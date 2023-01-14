@@ -12,6 +12,9 @@ import {
 import Button from "../shared/button/Button";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import { fn } from "moment/moment";
+import { updateLoggedUser } from "../../store/app/app.slice";
+import { useDispatch, useSelector } from "react-redux";
 
 const validationSchema = Yup.object({
   fullName: Yup.string()
@@ -24,7 +27,9 @@ const validationSchema = Yup.object({
 });
 
 const SignupForm = (props) => {
-  const { buttonText } = props;
+  const dispatch = useDispatch();
+  const { buttonText, data } = props;
+
   const [showPassword, setShowPassword] = useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -33,15 +38,21 @@ const SignupForm = (props) => {
     event.preventDefault();
   };
 
+  const usertoken = useSelector(
+    (state) => state.app.auth.loggedUser.accessToken
+  );
+  console.log(usertoken, "din signupform");
+
   const formik = useFormik({
     initialValues: {
-      fullName: "",
-      email: "",
-      password: "",
+      fullName: data?.fullName || "",
+      email: data?.email || "",
+      password: data?.password || "",
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
+      dispatch(updateLoggedUser(values));
     },
   });
 

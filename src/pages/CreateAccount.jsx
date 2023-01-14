@@ -1,12 +1,18 @@
-import { Stack } from "@mui/material";
+import { Stack, Box } from "@mui/material";
 import { Media } from "../components/authentication/Media";
 import { AuthForm } from "../components/authentication/AuthForm";
 import { PoseaTasksList } from "../components/tasks-list/PoseaTasksList";
 
 export const CreateAccount = () => {
   return (
-    <Stack spacing={3} padding="30px">
-      <PoseaTasksList />
+    <Box
+      sx={{
+        width: "100%",
+        display: "flex",
+        justifyContent: "center",
+        padding: "20px",
+      }}
+    >
       <Stack
         spacing={3}
         direction="row"
@@ -14,12 +20,11 @@ export const CreateAccount = () => {
           width: "1440px",
           height: "1024px",
           padding: "20px",
-          border: "1px solid",
         }}
       >
         <Media align="left" hasCreate={false} />
         <AuthForm align="left" hasLogin={true} />
       </Stack>
-    </Stack>
+    </Box>
   );
 };

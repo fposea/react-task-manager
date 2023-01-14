@@ -1,26 +1,54 @@
-import { Stack, Typography } from "@mui/material";
-import { useState } from "react";
-import { PoseaTasksList } from "../components/tasks-list/PoseaTasksList";
-import { MuresanTasksList } from "../components/tasks-list/MuresanTasksList";
+import React from "react";
+import { Box, Stack, Typography } from "@mui/material";
+import PageLayout from "../components/shared/page-layout/PageLayout";
+import TaskViewer from "../components/shared/task-viewer/TaskViewer";
+import { fetchTasksAction } from "../store/task/task.slice";
+import { useDispatch, useSelector } from "react-redux";
+import TabContent from "../components/tab-content/TabContent";
+import VarModal from "../components/modals/VarModal";
 
-function Tasks() {
+const Tasks = () => {
+  const dispatch = useDispatch();
+  React.useEffect(() => {
+    dispatch(fetchTasksAction());
+  }, [dispatch]);
+
+  const tasks = useSelector((state) => state.entities.tasks.data);
+  console.log(tasks);
+
   return (
-    <Stack>
-      <Stack spacing={2} padding="30px">
-        <Typography variant="h2" color="primary">
-          Tasks
-        </Typography>
-        <Stack spacing={1} paddingTop="16px">
-          <Typography variant="h6">Student: Florin Posea</Typography>
-          <PoseaTasksList />
+    <PageLayout>
+      <p>
+        Search bar , taburi + taskviewer + right bar cu calder pick si numele
+        tau si mail
+      </p>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          padding: "20px 20px 20px 5px",
+        }}
+      >
+        <Stack>
+          <Typography
+            sx={{ fontWeight: 600, fontSize: "28px", lineHeight: "34px" }}
+          >
+            Tasks
+          </Typography>
+          <Typography>Your tasks in your space.</Typography>
         </Stack>
-        {/* <Stack spacing={1} paddingTop="16px">
-          <Typography variant="h6">Student: Alexandra Muresan</Typography>
-          <MuresanTasksList />
-        </Stack> */}
-      </Stack>
-    </Stack>
+
+        <VarModal variant="createTask" />
+      </Box>
+
+      <TabContent type={true} />
+      <TaskViewer tasksData={tasks} />
+
+      {/* la click pe task => redirect in TaskCardDetailsPage link task/1 etc  */}
+      {/* + Create task modala de create #florin  si edit si delete */}
+    </PageLayout>
   );
-}
+};
 
 export default Tasks;

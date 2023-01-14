@@ -23,5 +23,8 @@ export const AntTab = styled(Tab)((props) => {
     "&.Mui-selected .MuiBadge-colorPrimary": {
       backgroundColor: "green",
     },
+    "& .MuiTab-iconWrapper": {
+      marginLeft: "15px"
+  }
   };
 });

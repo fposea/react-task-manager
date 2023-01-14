@@ -1,4 +1,7 @@
 import PropTypes from "prop-types";
+import { IconButton } from "@mui/material";
+import SvgTrashBin from "../../assets/icons/TrashBin";
+import SvgEditPen from "../../assets/icons/EditPen";
 import Button from "../shared/button/Button";
 import CreateTaskModal from "./CreateTaskModal";
 import EditTaskModal from "./EditTaskModal";
@@ -7,15 +10,16 @@ import LogOutModal from "./LogOutModal";
 import AddMatesModal from "./AddMatesModal";
 import EditProfileModal from "./EditProfileModal";
 import UploadProfilePictureModal from "./UploadProfilePictureModal";
-import { modalTypes, modalTypesArr } from "../../store/app/constants";
+import { modalTypes } from "../../store/app/constants";
 import { openModal, closeModal } from "../../store/app/app.slice";
 import { useDispatch, useSelector } from "react-redux";
 
 const VarModal = (props) => {
-  const { variant } = props;
+  const { variant, data } = props;
+
   const dispatch = useDispatch();
-  const open = useSelector((state) => state.app.modal.isOpen);
-  const modalType = useSelector((state) => state.app.modal.modalType);
+  const open = useSelector((state) => state.app.ui.modal.isOpen);
+  const modalType = useSelector((state) => state.app.ui.modal.modalType);
 
   const handleClose = () => {
     dispatch(closeModal());
@@ -61,6 +65,7 @@ const VarModal = (props) => {
             handleClose={handleClose}
             open={open}
             variant={modalType}
+            data={data}
           />
         );
       case modalTypes.addTeam:
@@ -84,15 +89,51 @@ const VarModal = (props) => {
     }
   };
 
+  const getModalButtonType = () => {
+    switch (modalTypes[variant]) {
+      case modalTypes.editTask:
+        return (
+          <Button
+            sx={{ width: "80px", background: "#FFF5F5" }}
+            onClick={() => dispatch(openModal(modalTypes[variant]))}
+          >
+            <SvgEditPen />
+          </Button>
+        );
+      case modalTypes.deleteTask:
+        return (
+          <Button
+            sx={{ width: "80px", background: "#FFF5F5" }}
+            onClick={() => dispatch(openModal(modalTypes[variant]))}
+          >
+            <SvgTrashBin />
+          </Button>
+        );
+      case modalTypes.logOut:
+        return (
+          <Button
+            variant="contained"
+            sx={{ width: "125px", background: "#B80020" }}
+            onClick={() => dispatch(openModal(modalTypes[variant]))}
+          >
+            {modalTypes[variant]}
+          </Button>
+        );
+      default:
+        return (
+          <Button
+            variant="contained"
+            onClick={() => dispatch(openModal(modalTypes[variant]))}
+          >
+            {modalTypes[variant]}
+          </Button>
+        );
+    }
+  };
+
   return (
     <div>
-      <Button
-        variant="contained"
-        onClick={() => dispatch(openModal(modalTypes[variant]))}
-      >
-        {modalTypes[variant]}
-      </Button>
-
+      {getModalButtonType()}
       {getModalContent()}
     </div>
   );
@@ -101,5 +142,5 @@ const VarModal = (props) => {
 export default VarModal;
 
 VarModal.propTypes = {
-  variant: PropTypes.oneOf(modalTypesArr).isRequired,
+  variant: PropTypes.oneOf(Object.keys(modalTypes)).isRequired,
 };
