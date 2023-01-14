@@ -1,13 +1,14 @@
 import React from "react";
 import { Typography, Box, CardActions, CardContent } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import Badge from "../badge/Badge";
+import Badge from "../Badge/Badge";
 import Button from "../button/Button";
 import TaskActions from "../task-actions/TaskActions";
 import AvatarWithName from "../../avatar/AvatarWithName";
 import emptyCercle from "../../../assets/images/cercle-empty.png";
 import fullCercle from "../../../assets/images/cercle-full.png";
 import completedCheck from "../../../assets/images/completed.png";
+import VarModal from "../../modals/VarModal";
 
 const StyledCard = styled(Box)(({ theme }) => ({
   "&": {
@@ -250,6 +251,8 @@ const renderSwitch = (status, currentUser, assignedTo, createdBy) => {
             <Button size="medium" variant="contained">
               Work on it Now
             </Button>
+            <VarModal variant="editTask" />
+            <VarModal variant="deleteTask" />
           </CardActions>
         );
       }
