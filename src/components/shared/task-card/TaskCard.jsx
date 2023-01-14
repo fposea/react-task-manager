@@ -1,7 +1,7 @@
 import React from "react";
 import { styled } from "@mui/material/styles";
 import { Typography, Box, Link, IconButton } from "@mui/material";
-import Badge from "../Badge/Badge";
+import Badge from "../badge/Badge";
 import arrowRight from "../../../assets/images/arrow-right.png";
 
 const selectBadgeColor = (status) => {
