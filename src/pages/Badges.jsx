@@ -1,4 +1,4 @@
-import Badge from "../components/shared/Badge/Badge";
+import Badge from "../components/shared/badge/Badge";
 import { Stack } from "@mui/system";
 
 const Badges = () => {
