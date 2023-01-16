@@ -1,7 +1,5 @@
 import React from "react";
 import { IconButton } from "@mui/material";
-import TrashBin from "../../../assets/icons/TrashBin";
-import EditPen from "../../../assets/icons/EditPen";
 import MessageBox from "../../../assets/icons/MessegeBox";
 import VarModal from "../../modals/VarModal";
 

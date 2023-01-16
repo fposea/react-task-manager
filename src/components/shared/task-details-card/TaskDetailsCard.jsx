@@ -1,7 +1,7 @@
 import React from "react";
 import { Typography, Box, CardActions, CardContent } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import Badge from "../Badge/Badge";
+import Badge from "../badge/Badge";
 import Button from "../button/Button";
 import TaskActions from "../task-actions/TaskActions";
 import AvatarWithName from "../../avatar/AvatarWithName";
