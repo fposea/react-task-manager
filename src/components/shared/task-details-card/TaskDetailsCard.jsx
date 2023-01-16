@@ -1,14 +1,13 @@
 import React from "react";
 import { Typography, Box, CardActions, CardContent } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import Badge from "../badge/Badge";
+import Badge from "../Badge/Badge";
 import Button from "../button/Button";
 import TaskActions from "../task-actions/TaskActions";
 import AvatarWithName from "../../avatar/AvatarWithName";
 import emptyCercle from "../../../assets/images/cercle-empty.png";
 import fullCercle from "../../../assets/images/cercle-full.png";
 import completedCheck from "../../../assets/images/completed.png";
-import VarModal from "../../modals/VarModal";
 
 const StyledCard = styled(Box)(({ theme }) => ({
   "&": {
@@ -76,32 +75,32 @@ const selectBadgeColor = (status) => {
 const calculateUserRoles = (a, b, c, status) => {
   switch (status) {
     case "Unasigned":
-      if (a === c) {
+      if (a.id === c.id) {
         return "assigner";
       } else {
         return "other";
       }
     case "Pending":
-      if (a === b) {
+      if (a.id === b.id) {
         return "developer";
       } else {
-        if (a === c) {
+        if (a.id === c.id) {
           return "assigner";
         } else return "other";
       }
     case "In Progress":
-      if (a === c) {
+      if (a.id === c.id) {
         return "assigner";
       } else {
-        if (a === b) {
+        if (a.id === b.id) {
           return "developer";
         } else return "other";
       }
     case "In Review":
-      if (a === c) {
+      if (a.id === c.id) {
         return "assigner";
       } else {
-        if (a === b) {
+        if (a.id === b.id) {
           return "developer";
         } else return "other";
       }
@@ -202,6 +201,7 @@ const renderSwitch = (status, currentUser, assignedTo, createdBy) => {
             <Button size="medium" variant="contained">
               Request Task
             </Button>
+            <TaskActions trash edit />
           </CardActions>
         );
       }
@@ -228,6 +228,7 @@ const renderSwitch = (status, currentUser, assignedTo, createdBy) => {
               <Button size="medium" variant="contained">
                 Work on it
               </Button>
+              <TaskActions trash edit />
             </CardActions>
           </>
         );
@@ -251,8 +252,7 @@ const renderSwitch = (status, currentUser, assignedTo, createdBy) => {
             <Button size="medium" variant="contained">
               Work on it Now
             </Button>
-            <VarModal variant="editTask" />
-            <VarModal variant="deleteTask" />
+            <TaskActions trash edit />
           </CardActions>
         );
       }
@@ -273,6 +273,7 @@ const renderSwitch = (status, currentUser, assignedTo, createdBy) => {
               >
                 Send for Review
               </Button>
+              <TaskActions trash edit />
             </CardActions>
           </>
         );
@@ -301,6 +302,7 @@ const renderSwitch = (status, currentUser, assignedTo, createdBy) => {
             >
               Send for Review
             </Button>
+            <TaskActions trash edit />
           </CardActions>
         );
       }
@@ -318,6 +320,7 @@ const renderSwitch = (status, currentUser, assignedTo, createdBy) => {
                 The assigner of your task gets to tell if if it’s done or not.
                 Kindly check back later.
               </Typography>
+              <TaskActions trash edit />
             </CardActions>
           </>
         );

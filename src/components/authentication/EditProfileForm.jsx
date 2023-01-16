@@ -50,8 +50,8 @@ const EditProfileForm = (props) => {
 
   const formik = useFormik({
     initialValues: {
-      fullName: data.fullName || "",
-      email: data.email || "",
+      fullName: data?.fullName || "",
+      email: data?.email || "",
       // password: data.password || "",
     },
     validationSchema: validationSchema,
