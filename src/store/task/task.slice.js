@@ -45,6 +45,22 @@ const taskSlice = createSlice({
       state.errors = null;
       state.data.push(action.payload);
     },
+    editTasksStart: (state) => {
+      state.isLoading = true;
+    },
+    editTaskSuccess: (state, action) => {
+      state.isLoading = false;
+      state.errors = null;
+      state.data.push(action.payload);
+    },
+    deleteTasksStart: (state) => {
+      state.isLoading = true;
+    },
+    deleteTaskSuccess: (state, action) => {
+      state.isLoading = false;
+      state.errors = null;
+      state.data.push(action.payload);
+    },
   },
 });
 export const {
@@ -54,7 +70,11 @@ export const {
   fetchTasksError,
   fetchTasksSuccess,
   createTaskSuccess,
+  editTaskSuccess,
+  deleteTaskSuccess,
   createTasksStart,
+  editTasksStart,
+  deleteTasksStart,
 } = taskSlice.actions;
 
 export const fetchTasksAction =
@@ -116,8 +136,50 @@ export const createTaskAction =
     }
   };
 
-// export const deleteTaskAction = () => async (dispatch) => {
+export const editTaskAction =
+  (payload, onSuccess, onError) => async (dispatch, getState) => {
+    dispatch(editTasksStart());
+    const state = getState();
+    const token = state.app.auth.loggedUser.accessToken.accessToken;
+    try {
+      const response = await axios.patch(
+        `${API_BASE_URL}/tasks/${payload.id}`,
+        {
+          title: payload.taskName,
+          description: payload.taskDescription,
+          dueDate: payload.dueDate,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      dispatch(editTaskSuccess(response.data));
+      if (onSuccess) {
+        onSuccess();
+      }
+    } catch (e) {
+      dispatch(fetchTasksError(e.response.data.message));
+      if (onError) {
+        onError(e.response.data.message);
+      }
+    }
+  };
 
-// }
+export const deleteTaskAction = (payload, onSuccess, onError) => (dispatch) => {
+  dispatch(deleteTasksStart());
+  try {
+    deleteTaskSuccess(payload);
+    if (onSuccess) {
+      onSuccess();
+    }
+  } catch (e) {
+    dispatch(fetchTasksError(e.payload.message));
+    if (onError) {
+      onError(e.message);
+    }
+  }
+};
 
 export default taskSlice.reducer;

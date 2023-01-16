@@ -14,7 +14,7 @@ const Tasks = () => {
   }, [dispatch]);
 
   const tasks = useSelector((state) => state.entities.tasks.data);
-  console.log(tasks);
+  // console.log(tasks);
 
   return (
     <PageLayout>

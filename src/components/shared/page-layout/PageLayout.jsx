@@ -31,7 +31,7 @@ const PageLayout = (props) => {
   const data = useSelector(
     (state) => state.app.auth.loggedUser.userInfo || null
   );
-  console.log(data);
+  // console.log(data);
 
   return (
     <StyledBox>

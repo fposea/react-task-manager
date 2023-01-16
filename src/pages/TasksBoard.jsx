@@ -85,6 +85,7 @@ const TasksBoard = () => {
         />
       </IconButton>
       <TaskDetailsCard
+        currentTask={tasks}
         title={tasks.title}
         description={tasks.description}
         createdAt={renderDate(tasks.createdAt)}

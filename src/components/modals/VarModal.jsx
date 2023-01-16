@@ -15,7 +15,7 @@ import { openModal, closeModal } from "../../store/app/app.slice";
 import { useDispatch, useSelector } from "react-redux";
 
 const VarModal = (props) => {
-  const { variant, data } = props;
+  const { variant, data, currentTask } = props;
 
   const dispatch = useDispatch();
   const open = useSelector((state) => state.app.ui.modal.isOpen);
@@ -41,6 +41,7 @@ const VarModal = (props) => {
             handleClose={handleClose}
             open={open}
             variant={modalType}
+            currentTask={currentTask}
           />
         );
       case modalTypes.deleteTask:
@@ -49,6 +50,7 @@ const VarModal = (props) => {
             handleClose={handleClose}
             open={open}
             variant={modalType}
+            currentTask={currentTask}
           />
         );
       case modalTypes.logOut:

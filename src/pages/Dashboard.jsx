@@ -14,7 +14,7 @@ const Dashboard = () => {
   const data = useSelector(
     (state) => state.app.auth.loggedUser.userInfo || null
   );
-  const name = data.fullName.split(" ");
+  const name = data?.fullName.split(" ");
 
   return (
     <PageLayout>

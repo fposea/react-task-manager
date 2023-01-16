@@ -48,7 +48,7 @@ const CreateTaskModal = (props) => {
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      // alert(JSON.stringify(values, null, 2));
       dispatch(createTaskAction(values));
       // dispatch(handleClose);
     },
