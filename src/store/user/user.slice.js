@@ -32,26 +32,20 @@ export const userSlice = createSlice({
 export const { registerSuccess, registerStart, registerError } =
   userSlice.actions;
 
-export const registerAction =
-  (payload, onSuccess, onError) => async (dispatch) => {
-    dispatch(loginStart());
-    try {
-      await axios.post(`${API_BASE_URL}/auth/signup`, {
-        email: payload.email,
-        password: payload.password,
-        fullName: payload.name,
-      });
-      dispatch(registerSuccess());
-      if (onSuccess) {
-        onSuccess();
-      }
-    } catch (e) {
-      dispatch(loginError(e.response.data.message));
-      if (onError) {
-        onError(e.response.data.message);
-      }
+export const registerAction = (payload, onSuccess, onError) => (dispatch) => {
+  dispatch(registerStart());
+  try {
+    dispatch(registerSuccess(payload));
+    if (onSuccess) {
+      onSuccess();
     }
-  };
+  } catch (e) {
+    dispatch(loginError(e.response.data.message));
+    if (onError) {
+      onError(e.response.data.message);
+    }
+  }
+};
 
 export const uploadProfilePicture =
   (payload, onSuccess, onError) => async (dispatch, getState) => {

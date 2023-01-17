@@ -1,6 +1,5 @@
 import { Stack, Typography } from "@mui/material";
 import { PoseaTasksList } from "../components/tasks-list/PoseaTasksList";
-import { CustomInput } from "../components/shared/inputs/CustomInput";
 import SignupForm from "../components/authentication/SignupForm";
 import EditProfileForm from "../components/authentication/EditProfileForm";
 import SigninForm from "../components/authentication/SigninForm";
@@ -11,10 +10,10 @@ export const Inputs = () => {
     <Stack spacing={3} padding="30px">
       <PoseaTasksList />
       <Stack direction="row" spacing={5}>
-        {/* <Stack sx={{ width: "384px" }}>
+        <Stack sx={{ width: "384px" }}>
           <Typography variant="h6">SignUp Form</Typography>
           <SignupForm buttonText="Create Account" />
-        </Stack> */}
+        </Stack>
         <Stack sx={{ width: "384px" }}>
           <Typography variant="h6">Edit Profile Form</Typography>
           <EditProfileForm

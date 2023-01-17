@@ -12,9 +12,11 @@ import {
 import Button from "../shared/button/Button";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import { fn } from "moment/moment";
-import { updateLoggedUser } from "../../store/app/app.slice";
-import { useDispatch, useSelector } from "react-redux";
+import { registerAction } from "../../store/user/user.slice";
+import { useDispatch } from "react-redux";
+import axios from "axios";
+
+const API_BASE_URL = "https://semicolon-task-manager.herokuapp.com";
 
 const validationSchema = Yup.object({
   fullName: Yup.string()
@@ -28,7 +30,7 @@ const validationSchema = Yup.object({
 
 const SignupForm = (props) => {
   const dispatch = useDispatch();
-  const { buttonText, data } = props;
+  const { buttonText } = props;
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -38,21 +40,26 @@ const SignupForm = (props) => {
     event.preventDefault();
   };
 
-  const usertoken = useSelector(
-    (state) => state.app.auth.loggedUser.accessToken
-  );
-  console.log(usertoken, "din signupform");
-
   const formik = useFormik({
     initialValues: {
-      fullName: data?.fullName || "",
-      email: data?.email || "",
-      password: data?.password || "",
+      fullName: "",
+      email: "",
+      password: "",
     },
     validationSchema: validationSchema,
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
-      dispatch(updateLoggedUser(values));
+    onSubmit: async (values) => {
+      // alert(JSON.stringify(values, null, 2));
+      try {
+        let response = await axios.post(`${API_BASE_URL}/auth/signup`, {
+          fullName: values.fullName,
+          email: values.email,
+          password: values.password,
+        });
+        registerAction(response.data);
+        alert("Success created account. Go to Log In page!");
+      } catch (err) {
+        console.log(err);
+      }
     },
   });
 
