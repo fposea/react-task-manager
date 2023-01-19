@@ -22,6 +22,8 @@ import SvgOverviewFilled from "../../../assets/icons/icon/filled/Overview";
 import SvgTasksFilled from "../../../assets/icons/icon/filled/Tasks";
 import SvgSettingsFilled from "../../../assets/icons/icon/filled/Settings";
 import { useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { tooggleSidebar } from "../../../store/app/app.slice";
 
 const drawerWidth = 280;
 
@@ -97,10 +99,13 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 const SideBar = () => {
-  const [open, setOpen] = React.useState(false);
+  // const [open, setOpen] = React.useState(false);
+  const dispatch = useDispatch();
+  const isOpen = useSelector((state) => state.app.ui.sidebar.isOpen);
 
   const handleDrawerToggle = () => {
-    setOpen((open) => !open);
+    // setOpen((open) => !open);
+    dispatch(tooggleSidebar(isOpen));
   };
 
   const location = useLocation();
@@ -111,7 +116,7 @@ const SideBar = () => {
     <Box sx={{ display: "flex" }}>
       <Drawer
         variant="permanent"
-        open={open}
+        open={isOpen}
         PaperProps={{ style: { border: "none" } }}
       >
         <Box

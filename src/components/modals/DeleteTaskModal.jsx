@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { deleteTaskAction } from "../../store/task/task.slice";
 import axios from "axios";
 
-const API_BASE_URL = "https://semicolon-task-manager.herokuapp.com";
+const API_BASE_URL = process.env.REACT_APP_API_URL;
 
 const DeleteTaskModal = (props) => {
   const { handleClose, open, currentTask, variant } = props;

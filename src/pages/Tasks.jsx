@@ -7,14 +7,28 @@ import { useDispatch, useSelector } from "react-redux";
 import TabContent from "../components/tab-content/TabContent";
 import VarModal from "../components/modals/VarModal";
 
+import { react } from "@babel/types";
+
 const Tasks = () => {
+  const tasks = useSelector((state) => state.entities.tasks.data);
+  const [filtered, setFiltered] = React.useState(tasks);
+  const onTabChange = (value, isFiltering) => {
+    if (isFiltering == true) {
+      const filteredTasks = [];
+      for (let i = 0; i < tasks.length; i++) {
+        if (value === tasks[i].status) {
+          filteredTasks.push(tasks[i]);
+        }
+      }
+      setFiltered(filteredTasks);
+    } else {
+      setFiltered(tasks);
+    }
+  };
   const dispatch = useDispatch();
   React.useEffect(() => {
     dispatch(fetchTasksAction());
   }, [dispatch]);
-
-  const tasks = useSelector((state) => state.entities.tasks.data);
-  // console.log(tasks);
 
   return (
     <PageLayout>
@@ -42,8 +56,8 @@ const Tasks = () => {
         <VarModal variant="createTask" />
       </Box>
 
-      <TabContent type={true} />
-      <TaskViewer tasksData={tasks} />
+      <TabContent type={true} onTabChange={onTabChange} />
+      <TaskViewer tasksData={filtered} />
 
       {/* la click pe task => redirect in TaskCardDetailsPage link task/1 etc  */}
       {/* + Create task modala de create #florin  si edit si delete */}
