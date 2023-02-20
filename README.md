@@ -2,7 +2,7 @@
 
 ---
 
-Project developed during a **React** course from [SkillBrain©](https://skillbrain.com/)
+Project developed during a **React** course at [SkillBrain©](https://skillbrain.com/)
 
 This is a team project (3 students).
 
